@@ -4,11 +4,21 @@ import * as React from "react";
 import { Calendar } from "@/components/ui/calendar";
 import { formatMonthDropdown } from "react-day-picker";
 import { tamrielMonths, holidays } from "@/data/calendarData";
+import { Sidebar } from "lucide-react";
 
 export default function Page() {
   const [date, setDate] = React.useState<Date | undefined>(new Date())
   
   return (
+  <div "flex min-h-screen bg-gray-50 dark:bg-gray-900"
+    {/*Sidebarix*/}
+    <Sidebar
+      moonPhases=  {moonPhasesData}
+      zodiacSigns= {zodiacSignsData}
+      holidays=    {holidays}
+    />
+
+    {/*Calendariun*/}
     <main className="flex flex-col min-h-screen items-center justify-center bg-gray-50 dark:bg-gray-900">
       <Calendar 
         mode="single" 
@@ -43,5 +53,6 @@ export default function Page() {
           : "no day"}
       </p>
     </main>
+  </div>
   );
 }
