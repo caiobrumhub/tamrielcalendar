@@ -2,16 +2,17 @@
 
 import * as React from "react";
 import { Calendar } from "@/components/ui/calendar";
-import { formatMonthDropdown } from "react-day-picker";
+import Sidebar from "@/components/Sidebar"
+//Notitia mensium
 import { tamrielMonths, holidays } from "@/data/calendarData";
-import { Sidebar } from "lucide-react";
+import {moonPhasesData, zodiacSignsData} from "@/data/sidebarData";
 
 export default function Page() {
   const [date, setDate] = React.useState<Date | undefined>(new Date())
   
   return (
-  <div "flex min-h-screen bg-gray-50 dark:bg-gray-900"
-    {/*Sidebarix*/}
+  <div className="flex min-h-screen bg-gray-50 dark:bg-gray-900">
+    {/*Latus Barra*/}
     <Sidebar
       moonPhases=  {moonPhasesData}
       zodiacSigns= {zodiacSignsData}
@@ -19,7 +20,7 @@ export default function Page() {
     />
 
     {/*Calendariun*/}
-    <main className="flex flex-col min-h-screen items-center justify-center bg-gray-50 dark:bg-gray-900">
+    <main className="flex-1 flex flex-col min-h-screen items-center justify-center bg-gray-50 dark:bg-gray-900">
       <Calendar 
         mode="single" 
         selected={date} 
@@ -42,6 +43,7 @@ export default function Page() {
             "relative after:content-[''] after:absolute after:bottom-1 after:right-1 after:w-2 after:h-2 after:bg-blue-500 after:rounded-full",
         }}
       />
+
       <p className="mt-4 text-sm text-gray-700 dark:text-gray-300">
         Selected date:{" "}
         {date
